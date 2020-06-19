@@ -1,0 +1,49 @@
+-- Running TripMD eval for /Users/misilva73/Documents/Tese/data-uah/D2 :
+Data was loaded and trip_list was created
+Running TripMD with a max radius of 0.0684
+All motifs of size 3 successfully extracted in 3.85 minutes
+All motifs of size 4 successfully extracted in 3.43 minutes
+All motifs of size 5 successfully extracted in 3.82 minutes
+All motifs of size 6 successfully extracted in 4.09 minutes
+All motifs of size 7 successfully extracted in 4.2 minutes
+All motifs of size 8 successfully extracted in 3.86 minutes
+All motifs of size 9 successfully extracted in 3.01 minutes
+All motifs of size 10 successfully extracted in 2.09 minutes
+All motifs of size 11 successfully extracted in 1.34 minutes
+All motifs of size 12 successfully extracted in 51.62 seconds
+All motifs of size 13 successfully extracted in 31.07 seconds
+All motifs of size 14 successfully extracted in 21.23 seconds
+All motifs of size 15 successfully extracted in 14.39 seconds
+All motifs of size 16 successfully extracted in 10.87 seconds
+All motifs of size 17 successfully extracted in 9.6 seconds
+All motifs of size 18 successfully extracted in 9.61 seconds
+All motifs of size 19 successfully extracted in 10.02 seconds
+All motifs of size 20 successfully extracted in 9.96 seconds
+All motifs of size 21 successfully extracted in 10.4 seconds
+All motifs of size 22 successfully extracted in 10.71 seconds
+All motifs of size 23 successfully extracted in 9.36 seconds
+All motifs of size 24 successfully extracted in 6.91 seconds
+All motifs of size 25 successfully extracted in 5.2 seconds
+All motifs of size 26 successfully extracted in 4.27 seconds
+All motifs of size 27 successfully extracted in 3.34 seconds
+Epoch 1 achieved an average quantization error of 0.0892
+Epoch 2 achieved an average quantization error of 0.0897
+Epoch 3 achieved an average quantization error of 0.0901
+Epoch 4 achieved an average quantization error of 0.0892
+Epoch 5 achieved an average quantization error of 0.0892
+Epoch 6 achieved an average quantization error of 0.0895
+Epoch 7 achieved an average quantization error of 0.0887
+Epoch 8 achieved an average quantization error of 0.088
+Epoch 9 achieved an average quantization error of 0.0873
+Epoch 10 achieved an average quantization error of 0.0868
+Epoch 11 achieved an average quantization error of 0.0864
+Epoch 12 achieved an average quantization error of 0.0854
+Epoch 13 achieved an average quantization error of 0.0849
+Epoch 14 achieved an average quantization error of 0.0819
+Epoch 15 achieved an average quantization error of 0.078
+Epoch 16 achieved an average quantization error of 0.0763
+Epoch 17 achieved an average quantization error of 0.0752
+Epoch 18 achieved an average quantization error of 0.0744
+Epoch 19 achieved an average quantization error of 0.0738
+Epoch 20 achieved an average quantization error of 0.0735
+TripMD eval pipeline was run in 53.98 minutes

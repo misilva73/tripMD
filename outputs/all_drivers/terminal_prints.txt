@@ -1,0 +1,53 @@
+-- Running TripMD eval for all drivers :
+Data was loaded and trip_list was created
+Running TripMD with a max radius of 0.0641
+All motifs of size 3 successfully extracted in 44.08 minutes
+All motifs of size 4 successfully extracted in 1.07 hours
+All motifs of size 5 successfully extracted in 1.81 hours
+All motifs of size 6 successfully extracted in 2.48 hours
+All motifs of size 7 successfully extracted in 2.93 hours
+All motifs of size 8 successfully extracted in 14.73 hours
+All motifs of size 9 successfully extracted in 4.2 hours
+All motifs of size 10 successfully extracted in 3.6 hours
+All motifs of size 11 successfully extracted in 2.59 hours
+All motifs of size 12 successfully extracted in 2.01 hours
+All motifs of size 13 successfully extracted in 1.43 hours
+All motifs of size 14 successfully extracted in 1.01 hours
+All motifs of size 15 successfully extracted in 41.91 minutes
+All motifs of size 16 successfully extracted in 27.45 minutes
+All motifs of size 17 successfully extracted in 18.64 minutes
+All motifs of size 18 successfully extracted in 12.24 minutes
+All motifs of size 19 successfully extracted in 8.34 minutes
+All motifs of size 20 successfully extracted in 5.81 minutes
+All motifs of size 21 successfully extracted in 4.38 minutes
+All motifs of size 22 successfully extracted in 3.31 minutes
+All motifs of size 23 successfully extracted in 2.82 minutes
+All motifs of size 24 successfully extracted in 2.41 minutes
+All motifs of size 25 successfully extracted in 2.09 minutes
+All motifs of size 26 successfully extracted in 1.89 minutes
+All motifs of size 27 successfully extracted in 1.7 minutes
+All motifs of size 28 successfully extracted in 1.47 minutes
+All motifs of size 29 successfully extracted in 1.26 minutes
+All motifs of size 30 successfully extracted in 1.02 minutes
+All motifs of size 31 successfully extracted in 47.04 seconds
+Epoch 1 achieved an average quantization error of 0.0834
+Epoch 2 achieved an average quantization error of 0.0821
+Epoch 3 achieved an average quantization error of 0.0813
+Epoch 4 achieved an average quantization error of 0.0805
+Epoch 5 achieved an average quantization error of 0.0801
+Epoch 6 achieved an average quantization error of 0.0803
+Epoch 7 achieved an average quantization error of 0.0795
+Epoch 8 achieved an average quantization error of 0.0791
+Epoch 9 achieved an average quantization error of 0.079
+Epoch 10 achieved an average quantization error of 0.0789
+Epoch 11 achieved an average quantization error of 0.0788
+Epoch 12 achieved an average quantization error of 0.0785
+Epoch 13 achieved an average quantization error of 0.0782
+Epoch 14 achieved an average quantization error of 0.0754
+Epoch 15 achieved an average quantization error of 0.0725
+Epoch 16 achieved an average quantization error of 0.0715
+Epoch 17 achieved an average quantization error of 0.0709
+Epoch 18 achieved an average quantization error of 0.0705
+Epoch 19 achieved an average quantization error of 0.0702
+Epoch 20 achieved an average quantization error of 0.07
+TripMD eval pipeline was run in 41.15 hours
