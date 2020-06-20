@@ -163,7 +163,7 @@ def plot_cluster_behavior_rates(
     label_counts_df = get_labels_counts_from_clusters(
         cluster_dict_list, trip_list, labeled_trips_ids
     )
-    fig, axs = plt.subplots(1, 3, figsize=(9, 3), constrained_layout=True)
+    fig, axs = plt.subplots(1, 3, figsize=(6.5, 3.2), constrained_layout=True)
     for n, behavior in enumerate(["normal", "aggressive", "drowsy"]):
         rate_series = label_counts_df[
             label_counts_df["behavior"] == behavior
@@ -181,5 +181,5 @@ def plot_cluster_behavior_rates(
         axs[n].axes.get_xaxis().set_visible(False)
         axs[n].axes.get_yaxis().set_visible(False)
         axs[n].set_title(behavior + " behavior")
-    fig.colorbar(im, ax=axs, shrink=0.8)
+    fig.colorbar(im, ax=axs, shrink=0.6, orientation="horizontal")
     return fig
