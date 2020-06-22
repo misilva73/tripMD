@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 import math
 from utils.uah_eval import get_labels_counts_from_clusters
 
@@ -114,6 +113,7 @@ def plot_clusters_acceleration(
         col = math.floor(neuron_index / n)
         row = neuron_index % n
         cluster_list = dtwsom_model.capture_objects[neuron_index]
+        axs[row, col].axhline(y=0, color='k', alpha=0.5, linestyle='-')
         for member_index in cluster_list:
             acc_obs = [obs[acc_index] for obs in motif_center_list[member_index]]
             axs[row, col].plot(
@@ -177,7 +177,7 @@ def plot_cluster_behavior_rates(
                     rate_mat[i][j] = rate_series[neuron_index]
                 else:
                     rate_mat[i][j] = 0
-        im = axs[n].imshow(rate_mat, cmap=plt.get_cmap("YlOrBr"), vmin=0, vmax=1)
+        im = axs[n].imshow(np.array(rate_mat).T, cmap=plt.get_cmap("YlOrBr"), vmin=0, vmax=1)
         axs[n].axes.get_xaxis().set_visible(False)
         axs[n].axes.get_yaxis().set_visible(False)
         axs[n].set_title(behavior + " behavior")

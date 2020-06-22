@@ -58,23 +58,19 @@ def plot_dtwsom_bmus(
         n = dtwsom_model._rows
         col = math.floor(neuron_index / n)
         row = neuron_index % n
-        neuron_lat_weights = [
+        neuron_lat_ys = [
             weight[lat_index] for weight in dtwsom_model._weights[neuron_index]
         ]
-        neuron_lon_weights = [
+        neuron_lon_ys = [
             weight[lon_index] for weight in dtwsom_model._weights[neuron_index]
         ]
+        xs = np.round(np.arange(len(neuron_lat_ys)) / freq_per_second, 2)
+        axs[row, col].axhline(y=0, color='k', alpha=0.5, linestyle='-')
         axs[row, col].plot(
-            np.round(np.arange(len(neuron_lat_weights)) / freq_per_second, 2),
-            neuron_lat_weights,
-            color="midnightblue",
-            label="Lateral Acceleration",
+            xs, neuron_lat_ys, color="midnightblue", label="Lateral Acceleration",
         )
         axs[row, col].plot(
-            np.round(np.arange(len(neuron_lon_weights)) / freq_per_second, 2),
-            neuron_lon_weights,
-            color="darkorange",
-            label="Longitudinal Acceleration",
+            xs, neuron_lon_ys, color="darkorange", label="Longitudinal Acceleration",
         )
         axs[row, col].set_title("Unit: " + str(neuron_index))
         if col == 0:

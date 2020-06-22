@@ -11,7 +11,7 @@ Cython==0.29.15
 decorator==4.4.2
 defusedxml==0.6.0
 dtaidistance==1.2.3
-dtw-som==1.0.8
+dtw-som==1.0.9
 entrypoints==0.3
 fire==0.2.1
 idna==2.9
