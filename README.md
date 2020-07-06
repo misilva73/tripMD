@@ -1,50 +1,55 @@
-# tripMD
+# TripMD: Driving patterns investigation via Motif Analysis
 
-The TripMD package was built for the paper *TripMD: Maneuver investigation via motif detection*. In the 
-[github repository](https://github.com/misilva73/tripMD), you'll find all the work presented in the paper.
+this repository contains all the code and supporting material for the article *TripMD: Driving patterns investigation via Motif Analysis*.
  
-TripMD is ...
+In short, TripMD is a system that extracts the most relevant driving patterns from sensor recordings (such as acceleration)
+and provides a visualization that allows for an easy investigation. This repository contains the source code for TripMD
+and the code to reproduce the experiments we did with the UAH-DriveSet dataset, a publicly available naturalistic driving
+dataset
 
 ## Github project structure
 
     ├── notebooks          <- Jupyter notebooks with the analysis and plots created for the paper
-    ├── outputs            <- Checkpoint files and results  computed for the paper
-    ├── paper              <- PDF and latex project for the paper
+    ├── outputs            <- Checkpoint files and results computed for the paper
     ├── src                <- Source Folder - tripMD package, experiment scripts for the paper and some extra utils
-    ├── README.md          <- The top-level README for this project
+    ├── .gitignore
+    ├── LICENSE
+    ├── README.md
     ├── requirements.txt   <- The requirements file for reproducing the environment used in the paper
 
 ## Prerequisites
 
-In order to run the tripMD package, you need the following packages:
+Make sure you have Python 3 installed and that you install all the python packages listed in the requirements.txt file.
 
-    dtaidistance
-    dtw-som==1.0.4
-    numpy
-    saxpy
-    sklearn?
-    
-    
-In addition to these, if you wish to run the notebooks in this repository, then you need the following packages:
+## Reproducing the experiments
 
-    jupyterlab
-    matplotlib
-    pandas
-    seaborn
+This article contains two different experiments. In the first experiment, we pick a single driver and explore in detail
+the outputs obtained from TripMD. In the second experiment, we focus on the task of identifying the driving behaviors of
+an unknown driver using drivers whose behavior we do know.
 
-## Installing
+Before starting to reproduce the experiments, you must clone/download this repository. Then, you have to download 
+UAH-DriveSet dataset, which you can do [here](http://www.robesafe.uah.es/personal/eduardo.romera/uah-driveset/#download).
 
-This packages is available on PyPI and thus can be directly installed with pip:
+After you have cloned the project and installed the proper python environment setup, you can reproduce the first experiment
+using the CLI tool in the script `uah_run.py`. Bellow, we are assuming that the full path for the folder where you have 
+the UAH-DriveSet dataset is `/Documents/uah_data`. Don't forget to replace this for the correct path.
 
-```bash
-pip install tripmd
-```
+The steps are the following:
 
-Alternatively, this package can installed from source by cloning this repository and installing it manually with the 
-command:
+1. Open a terminal in the project's root.
+2. Activate the python environment.
+3. Run the command `python ./src/experiments/uah_run.py single_driver --data_path=/Documents/uah_data/D2`. This will run
+TripMD and will save all the outputs in the folder `outputs/D2_driver`.
+4. Start a jupyter lab session by running the command `jupyter lab`.
+5. Run the notebook `tripmd_outputs_single_drivers.ipynb` to reproduce all the plots and analysis.
 
-```bash
-python setup.py install
-```
+Now, the reproduce the second experiment, the steps are mostly the same:
 
-## Example Code
+1. Open a terminal in the project's root.
+2. Activate the python environment.
+3. Run the command `python ./src/experiments/uah_run.py all_drivers --data_path=/Documents/uah_data`. This will run
+TripMD and will save all the outputs in the folder `outputs/all_drivers`. Recall that we are running a motif detection 
+task for the entire dataset, which is quite computationally intense. Be prepared to wait some hours to get all the outputs.
+4. Start a jupyter lab session by running the command `jupyter lab`.
+5. Run the notebook `behavior_analysis.ipynb` to reproduce all the plots and analysis. You can additionally run the notebook
+`tripmd_outputs_all_drivers.ipynb` to explore the TripMd outputs for the the entire UAH-DriveSet dataset.
