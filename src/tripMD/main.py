@@ -54,7 +54,7 @@ class TripMD(object):
             elif k == "output_folder":
                 self._output_folder = v
             else:
-                raise Warning("The provided key {} a user-defined parameter".format(k))
+                raise Warning("The provided key {} is not a user-defined parameter".format(k))
 
     def estimate_max_radius(self):
         sample_obs_list = self.sample_trip_list(2000)
