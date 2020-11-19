@@ -24,28 +24,48 @@ def plot_motif_in_trips(motif, trip_list, lon_index, lat_index, add_suptitle):
     if add_suptitle:
         plt.suptitle(str(motif.get_description()), y=1.05)
     # Plot full trips
-    for i, trip in enumerate(trip_list):
+    if n_rows > 1:
+        for i, trip in enumerate(trip_list):
+            timestamps = trip.get_timestamps()
+            axs[i, 0].plot(timestamps, trip.get_signal(lat_index), "xkcd:grey", alpha=0.5)
+            axs[i, 0].set_title("Trip {} : Lateral".format(str(i)))
+            axs[i, 1].plot(timestamps, trip.get_signal(lon_index), "xkcd:grey", alpha=0.5)
+            axs[i, 1].set_title("Trip {} : Longitudinal".format(str(i)))
+    else:
+        trip = trip_list[0]
         timestamps = trip.get_timestamps()
-        axs[i, 0].plot(timestamps, trip.get_signal(lat_index), "xkcd:grey", alpha=0.5)
-        axs[i, 0].set_title("Trip {} : Lateral".format(str(i)))
-        axs[i, 1].plot(timestamps, trip.get_signal(lon_index), "xkcd:grey", alpha=0.5)
-        axs[i, 1].set_title("Trip {} : Longitudinal".format(str(i)))
+        axs[0].plot(timestamps, trip.get_signal(lat_index), "xkcd:grey", alpha=0.5)
+        axs[0].set_title("Trip {} : Lateral".format(str(1)))
+        axs[1].plot(timestamps, trip.get_signal(lon_index), "xkcd:grey", alpha=0.5)
+        axs[1].set_title("Trip {} : Longitudinal".format(str(1)))
     # Add members to plots
     for member in motif.get_members():
         trip_id = member.get_trip_index()
         trip = trip_list[trip_id]
         pointers = member.get_pointers()
         timestamps = trip.get_windown_timestamps(pointers)
-        axs[trip_id, 0].plot(
-            timestamps,
-            trip.get_windown_obs_in_dim(pointers, lat_index),
-            "xkcd:dark grey",
-        )
-        axs[trip_id, 1].plot(
-            timestamps,
-            trip.get_windown_obs_in_dim(pointers, lon_index),
-            "xkcd:dark grey",
-        )
+        if n_rows > 1:
+            axs[trip_id, 0].plot(
+                timestamps,
+                trip.get_windown_obs_in_dim(pointers, lat_index),
+                "xkcd:dark grey",
+            )
+            axs[trip_id, 1].plot(
+                timestamps,
+                trip.get_windown_obs_in_dim(pointers, lon_index),
+                "xkcd:dark grey",
+            )
+        else:
+            axs[0].plot(
+                timestamps,
+                trip.get_windown_obs_in_dim(pointers, lat_index),
+                "xkcd:dark grey",
+            )
+            axs[1].plot(
+                timestamps,
+                trip.get_windown_obs_in_dim(pointers, lon_index),
+                "xkcd:dark grey",
+            )
     plt.tight_layout()
     return fig
 
