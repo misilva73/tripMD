@@ -71,10 +71,10 @@ def get_1dim_cuts(signal_list):
 
     """
     joined_signal = np.concatenate(signal_list)
-    centered_signal = joined_signal - np.mean(joined_signal)
-    p5 = np.percentile(centered_signal, 5)
-    p15 = np.percentile(centered_signal, 15)
-    p85 = np.percentile(centered_signal, 85)
-    p95 = np.percentile(centered_signal, 95)
+    # centered_signal = joined_signal - np.mean(joined_signal)
+    p5 = np.percentile(joined_signal, 5)
+    p15 = np.percentile(joined_signal, 15)
+    p85 = np.percentile(joined_signal, 85)
+    p95 = np.percentile(joined_signal, 95)
     signal_cuts = np.array([-np.inf, p5, p15, p85, p95])
     return signal_cuts
