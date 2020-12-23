@@ -1,3 +1,4 @@
+import random
 import numpy as np
 import pandas as pd
 
@@ -29,7 +30,7 @@ def compute_test_driver_labels(
         }
     )
     labels_df["is_pred_correct"] = (
-            labels_df["trip_true_label"] == labels_df["trip_pred_label"]
+        labels_df["trip_true_label"] == labels_df["trip_pred_label"]
     )
     return labels_df
 
@@ -128,3 +129,46 @@ def compute_motif_behavior_counts(motif, trip_list, labeled_trips_ids=None):
     label_counts["n_members"] = len(all_members_labels)
     label_counts["n_labeled_members"] = len(members_labels)
     return label_counts
+
+
+def build_bootstrap_analysis_df(n_boot, trips_df, trip_list, cluster_dict_list):
+    labeled_trips_ids = sorted(trips_df[trips_df["user_id"] != "D2"]["trip_id"])
+    driver_trips_ids = sorted(trips_df[trips_df["user_id"] == "D2"]["trip_id"])
+    bootstrap_df = pd.DataFrame()
+    for i in range(n_boot):
+        sampled_cluster_dicts = bootstrap_sample_cluster_dicts(cluster_dict_list)
+        driver_df = compute_test_driver_labels(
+            sampled_cluster_dicts, trip_list, labeled_trips_ids, driver_trips_ids
+        )
+        driver_df["i_boot"] = i
+        bootstrap_df = bootstrap_df.append(driver_df)
+
+    bootstrap_df = bootstrap_df.join(
+        trips_df[trips_df["user_id"] == "D2"][["road"]], on="trip_id"
+    )
+    bootstrap_df["trip"] = bootstrap_df["trip_true_label"] + "-" + bootstrap_df["road"]
+    melt_bootstrap_df = bootstrap_df.melt(
+        id_vars=["trip"],
+        value_vars=["aggressive", "drowsy", "normal"],
+        var_name="behavior",
+        value_name="score",
+    )
+    return melt_bootstrap_df
+
+
+def bootstrap_sample_cluster_dicts(cluster_dict_list):
+    cluster_sizes = [len(cdict["cluster_members"]) for cdict in cluster_dict_list]
+    n_motifs = sum(cluster_sizes)
+    sample_weights = [size / n_motifs * 100 for size in cluster_sizes]
+    cluster_indices = list(range(len(sample_weights)))
+    sampled_cluster_dicts = {
+        i: {"cluster_ts": cdict["cluster_ts"], "cluster_members": []}
+        for i, cdict in enumerate(cluster_dict_list)
+    }
+    for i in range(n_motifs):
+        cluster_index = random.choices(cluster_indices, weights=sample_weights)[0]
+        random_motif = random.choice(
+            cluster_dict_list[cluster_index]["cluster_members"]
+        )
+        sampled_cluster_dicts[cluster_index]["cluster_members"].append(random_motif)
+    return list(sampled_cluster_dicts.values())
